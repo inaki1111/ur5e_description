@@ -52,6 +52,7 @@
 
   <xacro:include filename="$(find ur5e_description)/urdf/inc/ur_common.xacro" />
   <xacro:include filename="$(find ur5e_description)/urdf/robotiq_85_gripper.urdf.xacro"/>
+  <xacro:include filename="$(find ur5e_description)/urdf/_d455.urdf.xacro" />
 
   <xacro:macro name="ur_robot" params="
     name
@@ -393,6 +394,15 @@
       <parent link="${tf_prefix}flange"/>
       <child link="${tf_prefix}tool0"/>
     </joint>
+
+    <!-- Después de definir el chain principal y antes de cerrar el macro 'ur_robot' -->
+    <xacro:sensor_d455
+      parent="${tf_prefix}wrist_3_link"
+      name="camera_d455"
+      use_nominal_extrinsics="true">
+      <!-- Ajusta la posición y orientación de la cámara respecto a wrist_2_link -->
+      <origin xyz="0.0 -0.05 -0.06" rpy="0 -1.5708 1.5708"/>
+    </xacro:sensor_d455>
 
 
 

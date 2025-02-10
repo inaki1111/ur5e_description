@@ -28,12 +28,16 @@
 #
 # Author: Denis Stogl
 
+#!/usr/bin/env python3
+
+import os
 from launch import LaunchDescription
 from launch.actions import (
     DeclareLaunchArgument,
     IncludeLaunchDescription,
     OpaqueFunction,
     RegisterEventHandler,
+    SetEnvironmentVariable,
 )
 from launch.conditions import IfCondition, UnlessCondition
 from launch.event_handlers import OnProcessExit
@@ -50,52 +54,49 @@ from launch_ros.substitutions import FindPackageShare
 
 
 def launch_setup(context, *args, **kwargs):
-    # Initialize Arguments
-    ur_type = LaunchConfiguration("ur_type")
-    safety_limits = LaunchConfiguration("safety_limits")
-    safety_pos_margin = LaunchConfiguration("safety_pos_margin")
-    safety_k_position = LaunchConfiguration("safety_k_position")
-    # General arguments
-    controllers_file = LaunchConfiguration("controllers_file")
-    tf_prefix = LaunchConfiguration("tf_prefix")
-    activate_joint_controller = LaunchConfiguration("activate_joint_controller")
-    initial_joint_controller = LaunchConfiguration("initial_joint_controller")
-    description_file = LaunchConfiguration("description_file")
-    launch_rviz = LaunchConfiguration("launch_rviz")
-    rviz_config_file = LaunchConfiguration("rviz_config_file")
-    gazebo_gui = LaunchConfiguration("gazebo_gui")
-    world_file = LaunchConfiguration("world_file")
+    # == Recuperar Argumentos ==
+    ur_type = LaunchConfiguration("ur_type").perform(context)
+    safety_limits = LaunchConfiguration("safety_limits").perform(context)
+    safety_pos_margin = LaunchConfiguration("safety_pos_margin").perform(context)
+    safety_k_position = LaunchConfiguration("safety_k_position").perform(context)
 
+    controllers_file = LaunchConfiguration("controllers_file").perform(context)
+    tf_prefix = LaunchConfiguration("tf_prefix").perform(context)
+    activate_joint_controller = LaunchConfiguration("activate_joint_controller").perform(context)
+    initial_joint_controller = LaunchConfiguration("initial_joint_controller").perform(context)
+    description_file = LaunchConfiguration("description_file").perform(context)
+    launch_rviz = LaunchConfiguration("launch_rviz").perform(context)
+    rviz_config_file = LaunchConfiguration("rviz_config_file").perform(context)
+    gazebo_gui = LaunchConfiguration("gazebo_gui").perform(context)
+    world_file = LaunchConfiguration("world_file").perform(context)
+
+    # == Generar la descripción del robot (URDF expandido con xacro) ==
     robot_description_content = Command(
         [
             PathJoinSubstitution([FindExecutable(name="xacro")]),
             " ",
             description_file,
             " ",
-            "safety_limits:=",
-            safety_limits,
+            "safety_limits:=", safety_limits,
             " ",
-            "safety_pos_margin:=",
-            safety_pos_margin,
+            "safety_pos_margin:=", safety_pos_margin,
             " ",
-            "safety_k_position:=",
-            safety_k_position,
+            "safety_k_position:=", safety_k_position,
             " ",
-            "name:=",
-            "ur",
+            "name:=ur",  # Nombre base del robot
             " ",
-            "ur_type:=",
-            ur_type,
+            "ur_type:=", ur_type,
             " ",
-            "tf_prefix:=",
-            tf_prefix,
+            "tf_prefix:=", tf_prefix,
             " ",
-            "simulation_controllers:=",
-            controllers_file,
+            "simulation_controllers:=", controllers_file,
         ]
     )
+
     robot_description = {"robot_description": robot_description_content}
 
+    # == Nodos de ROS 2 ==
+    # robot_state_publisher
     robot_state_publisher_node = Node(
         package="robot_state_publisher",
         executable="robot_state_publisher",
@@ -103,6 +104,7 @@ def launch_setup(context, *args, **kwargs):
         parameters=[{"use_sim_time": True}, robot_description],
     )
 
+    # RViz (condicional)
     rviz_node = Node(
         package="rviz2",
         executable="rviz2",
@@ -112,13 +114,14 @@ def launch_setup(context, *args, **kwargs):
         condition=IfCondition(launch_rviz),
     )
 
+    # Spawner de joint_state_broadcaster
     joint_state_broadcaster_spawner = Node(
         package="controller_manager",
         executable="spawner",
         arguments=["joint_state_broadcaster", "--controller-manager", "/controller_manager"],
     )
 
-    # Delay rviz start after `joint_state_broadcaster`
+    # Retardar el inicio de RViz hasta que haya arrancado el joint_state_broadcaster
     delay_rviz_after_joint_state_broadcaster_spawner = RegisterEventHandler(
         event_handler=OnProcessExit(
             target_action=joint_state_broadcaster_spawner,
@@ -127,7 +130,7 @@ def launch_setup(context, *args, **kwargs):
         condition=IfCondition(launch_rviz),
     )
 
-    # There may be other controllers of the joints, but this is the initially-started one
+    # Spawner del controlador inicial de las juntas (activo o parado)
     initial_joint_controller_spawner_started = Node(
         package="controller_manager",
         executable="spawner",
@@ -141,65 +144,72 @@ def launch_setup(context, *args, **kwargs):
         condition=UnlessCondition(activate_joint_controller),
     )
 
-    # GZ nodes
-    gz_spawn_entity = Node(
-        package="ros_gz_sim",
-        executable="create",
-        output="screen",
-        arguments=[
-            "-string",
-            robot_description_content,
-            "-name",
-            "ur",
-            "-allow_renaming",
-            "true",
-        ],
-    )
-
+    # == Nodos relacionados con Gazebo/Ignition ==
+    # Lanzar GZ Sim
     gz_launch_description = IncludeLaunchDescription(
         PythonLaunchDescriptionSource(
-            [FindPackageShare("ros_gz_sim"), "/launch/gz_sim.launch.py"]
+            PathJoinSubstitution([
+                FindPackageShare("ros_gz_sim"),
+                "launch",
+                "gz_sim.launch.py"
+            ])
         ),
         launch_arguments={
             "gz_args": IfElseSubstitution(
-                gazebo_gui,
+                LaunchConfiguration("gazebo_gui"),
                 if_value=[" -r -v 4 ", world_file],
                 else_value=[" -s -r -v 4 ", world_file],
             )
         }.items(),
     )
 
-    # Make the /clock topic available in ROS
+    # Crear la entidad a partir del URDF
+    gz_spawn_entity = Node(
+        package="ros_gz_sim",
+        executable="create",
+        output="screen",
+        arguments=[
+            "-string",
+            robot_description_content,  # El URDF expandido
+            "-name",
+            "ur",                       # Nombre de la entidad en Gazebo
+            "-allow_renaming",
+            "true",
+        ],
+    )
+
+    # Puente de /clock
     gz_sim_bridge = Node(
         package="ros_gz_bridge",
         executable="parameter_bridge",
         arguments=[
-            "/clock@rosgraph_msgs/msg/Clock[gz.msgs.Clock",
+            "/clock@rosgraph_msgs/msg/Clock[gz.msgs.Clock",  # Haz que /clock esté disponible en ROS
         ],
         output="screen",
     )
 
+    # Juntamos todos los nodos a iniciar
     nodes_to_start = [
         robot_state_publisher_node,
         joint_state_broadcaster_spawner,
         delay_rviz_after_joint_state_broadcaster_spawner,
         initial_joint_controller_spawner_stopped,
         initial_joint_controller_spawner_started,
-        gz_spawn_entity,
-        gz_launch_description,
-        gz_sim_bridge,
+        gz_launch_description,   # Lanza gz_sim
+        gz_spawn_entity,         # Inserta el robot en la simulación
+        gz_sim_bridge,           # Bridge de Clock
     ]
 
     return nodes_to_start
 
 
 def generate_launch_description():
+    # == Declarar argumentos ==
     declared_arguments = []
-    # UR specific arguments
     declared_arguments.append(
         DeclareLaunchArgument(
             "ur_type",
-            description="Type/series of used UR robot.",
+            description="Tipo o serie del robot UR.",
             choices=["ur3", "ur3e", "ur5", "ur5e", "ur10", "ur10e", "ur16e", "ur20", "ur30"],
             default_value="ur5e",
         )
@@ -208,54 +218,51 @@ def generate_launch_description():
         DeclareLaunchArgument(
             "safety_limits",
             default_value="true",
-            description="Enables the safety limits controller if true.",
+            description="Activa el safety limits controller si es true.",
         )
     )
     declared_arguments.append(
         DeclareLaunchArgument(
             "safety_pos_margin",
             default_value="0.15",
-            description="The margin to lower and upper limits in the safety controller.",
+            description="Margen (pos_margin) en el safety controller.",
         )
     )
     declared_arguments.append(
         DeclareLaunchArgument(
             "safety_k_position",
             default_value="20",
-            description="k-position factor in the safety controller.",
+            description="k-position factor en el safety controller.",
         )
     )
-    # General arguments
     declared_arguments.append(
         DeclareLaunchArgument(
             "controllers_file",
             default_value=PathJoinSubstitution(
                 [FindPackageShare("ur5e_description"), "config", "ur_controllers.yaml"]
             ),
-            description="Absolute path to YAML file with the controllers configuration.",
+            description="Ruta absoluta al YAML con la configuración de los controladores.",
         )
     )
     declared_arguments.append(
         DeclareLaunchArgument(
             "tf_prefix",
             default_value='""',
-            description="Prefix of the joint names, useful for "
-            "multi-robot setup. If changed than also joint names in the controllers' configuration "
-            "have to be updated.",
+            description="Prefijo de los joints (para multi-robot).",
         )
     )
     declared_arguments.append(
         DeclareLaunchArgument(
             "activate_joint_controller",
             default_value="true",
-            description="Enable headless mode for robot control",
+            description="Si true, el controlador de las juntas se inicia activo. Si false, se inicia en modo --stopped.",
         )
     )
     declared_arguments.append(
         DeclareLaunchArgument(
             "initial_joint_controller",
             default_value="scaled_joint_trajectory_controller",
-            description="Robot controller to start.",
+            description="Nombre del controlador de juntas a arrancar.",
         )
     )
     declared_arguments.append(
@@ -264,11 +271,15 @@ def generate_launch_description():
             default_value=PathJoinSubstitution(
                 [FindPackageShare("ur5e_description"), "urdf", "ur.urdf.xacro"]
             ),
-            description="URDF/XACRO description file (absolute path) with the robot.",
+            description="URDF/XACRO (ruta absoluta) con la descripción del robot.",
         )
     )
     declared_arguments.append(
-        DeclareLaunchArgument("launch_rviz", default_value="true", description="Launch RViz?")
+        DeclareLaunchArgument(
+            "launch_rviz",
+            default_value="true",
+            description="¿Lanzar RViz?",
+        )
     )
     declared_arguments.append(
         DeclareLaunchArgument(
@@ -276,20 +287,47 @@ def generate_launch_description():
             default_value=PathJoinSubstitution(
                 [FindPackageShare("ur5e_description"), "rviz", "view_robot.rviz"]
             ),
-            description="Rviz config file (absolute path) to use when launching rviz.",
+            description="Archivo .rviz (ruta absoluta) para configurar RViz.",
         )
     )
     declared_arguments.append(
         DeclareLaunchArgument(
-            "gazebo_gui", default_value="true", description="Start gazebo with GUI?"
+            "gazebo_gui",
+            default_value="true",
+            description="Inicia Gazebo con GUI (true) o en modo servidor (false).",
         )
     )
     declared_arguments.append(
         DeclareLaunchArgument(
             "world_file",
             default_value="empty.sdf",
-            description="Gazebo world file (absolute path or filename from the gazebosim worlds collection) containing a custom world.",
+            description="Archivo del mundo de Gazebo (puede ser ruta absoluta o un nombre existente).",
         )
     )
 
-    return LaunchDescription(declared_arguments + [OpaqueFunction(function=launch_setup)])
+    # == OPCIONAL: Ajustar GAZEBO_MODEL_PATH para que Gazebo busque "model://ur5e_description" ==
+    #
+    # 1) Solo tiene sentido si tu URDF/xacro usa "model://" en lugar de "package://".
+    # 2) Debes tener una carpeta con el nombre "ur5e_description", un "model.config",
+    #    y las subcarpetas "meshes/" dentro de esa carpeta.
+    # 3) Reemplaza la ruta de ejemplo con la que tengas en tu workspace o en 'FindPackageShare'.
+    #
+    #  Si NO quieres usar 'model://', puedes saltar este SetEnvironmentVariable (o comentarlo).
+    #
+
+    set_gazebo_model_path = SetEnvironmentVariable(
+        name="GAZEBO_MODEL_PATH",
+        value=[
+            PathJoinSubstitution([FindPackageShare("ur5e_description")]),
+
+        ],
+    )
+
+    return LaunchDescription(
+        declared_arguments
+        + [
+            # Si vas a usar "model://", descomenta la siguiente línea
+            set_gazebo_model_path,
+            OpaqueFunction(function=launch_setup),
+        ]
+    )
