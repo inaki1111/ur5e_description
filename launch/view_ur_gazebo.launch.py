@@ -95,8 +95,7 @@ def launch_setup(context, *args, **kwargs):
 
     robot_description = {"robot_description": robot_description_content}
 
-    # == Nodos de ROS 2 ==
-    # robot_state_publisher
+
     robot_state_publisher_node = Node(
         package="robot_state_publisher",
         executable="robot_state_publisher",
@@ -146,37 +145,35 @@ def launch_setup(context, *args, **kwargs):
 
     # == Nodos relacionados con Gazebo/Ignition ==
     # Lanzar GZ Sim
-    gz_launch_description = IncludeLaunchDescription(
-        PythonLaunchDescriptionSource(
-            PathJoinSubstitution([
-                FindPackageShare("ros_gz_sim"),
-                "launch",
-                "gz_sim.launch.py"
-            ])
-        ),
-        launch_arguments={
-            "gz_args": IfElseSubstitution(
-                LaunchConfiguration("gazebo_gui"),
-                if_value=[" -r -v 4 ", world_file],
-                else_value=[" -s -r -v 4 ", world_file],
-            )
-        }.items(),
-    )
 
-    # Crear la entidad a partir del URDF
+    # GZ nodes
     gz_spawn_entity = Node(
         package="ros_gz_sim",
         executable="create",
         output="screen",
         arguments=[
             "-string",
-            robot_description_content,  # El URDF expandido
+            robot_description_content,
             "-name",
-            "ur",                       # Nombre de la entidad en Gazebo
+            "ur",
             "-allow_renaming",
             "true",
         ],
     )
+
+    gz_launch_description = IncludeLaunchDescription(
+        PythonLaunchDescriptionSource(
+            [FindPackageShare("ros_gz_sim"), "/launch/gz_sim.launch.py"]
+        ),
+        launch_arguments={
+            "gz_args": IfElseSubstitution(
+                gazebo_gui,
+                if_value=[" -r -v 4 ", world_file],
+                else_value=[" -s -r -v 4 ", world_file],
+            )
+        }.items(),
+    )
+
 
     # Puente de /clock
     gz_sim_bridge = Node(
@@ -305,29 +302,4 @@ def generate_launch_description():
         )
     )
 
-    # == OPCIONAL: Ajustar GAZEBO_MODEL_PATH para que Gazebo busque "model://ur5e_description" ==
-    #
-    # 1) Solo tiene sentido si tu URDF/xacro usa "model://" en lugar de "package://".
-    # 2) Debes tener una carpeta con el nombre "ur5e_description", un "model.config",
-    #    y las subcarpetas "meshes/" dentro de esa carpeta.
-    # 3) Reemplaza la ruta de ejemplo con la que tengas en tu workspace o en 'FindPackageShare'.
-    #
-    #  Si NO quieres usar 'model://', puedes saltar este SetEnvironmentVariable (o comentarlo).
-    #
-
-    set_gazebo_model_path = SetEnvironmentVariable(
-        name="GAZEBO_MODEL_PATH",
-        value=[
-            PathJoinSubstitution([FindPackageShare("ur5e_description")]),
-
-        ],
-    )
-
-    return LaunchDescription(
-        declared_arguments
-        + [
-            # Si vas a usar "model://", descomenta la siguiente línea
-            set_gazebo_model_path,
-            OpaqueFunction(function=launch_setup),
-        ]
-    )
+    return LaunchDescription(declared_arguments + [OpaqueFunction(function=launch_setup)])
