@@ -1,0 +1,169 @@
+[0.009s] Invoking command in '/home/cromanma/ros2_ws/src/ur5e_description/build/ur5e_description': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/cromanma/ros2_ws/install/moveit_configs_utils:/home/cromanma/ros2_ws/install/launch_param_builder:/home/cromanma/ros2_ws/install/detection:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake /home/cromanma/ros2_ws/src/ur5e_description -DCMAKE_INSTALL_PREFIX=/home/cromanma/ros2_ws/src/ur5e_description/install/ur5e_description
+[0.080s] -- The C compiler identification is GNU 13.3.0
+[0.146s] -- The CXX compiler identification is GNU 13.3.0
+[0.160s] -- Detecting C compiler ABI info
+[0.228s] -- Detecting C compiler ABI info - done
+[0.233s] -- Check for working C compiler: /usr/bin/cc - skipped
+[0.234s] -- Detecting C compile features
+[0.234s] -- Detecting C compile features - done
+[0.243s] -- Detecting CXX compiler ABI info
+[0.314s] -- Detecting CXX compiler ABI info - done
+[0.319s] -- Check for working CXX compiler: /usr/bin/c++ - skipped
+[0.319s] -- Detecting CXX compile features
+[0.319s] -- Detecting CXX compile features - done
+[0.326s] -- Found ament_cmake: 2.5.3 (/opt/ros/jazzy/share/ament_cmake/cmake)
+[0.426s] -- Found Python3: /usr/bin/python3 (found version "3.12.3") found components: Interpreter 
+[0.526s] -- Found ament_cmake_pytest: 2.5.3 (/opt/ros/jazzy/share/ament_cmake_pytest/cmake)
+[1.037s] -- Configuring done (1.0s)
+[1.039s] -- Generating done (0.0s)
+[1.040s] -- Build files have been written to: /home/cromanma/ros2_ws/src/ur5e_description/build/ur5e_description
+[1.044s] Invoked command in '/home/cromanma/ros2_ws/src/ur5e_description/build/ur5e_description' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/cromanma/ros2_ws/install/moveit_configs_utils:/home/cromanma/ros2_ws/install/launch_param_builder:/home/cromanma/ros2_ws/install/detection:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake /home/cromanma/ros2_ws/src/ur5e_description -DCMAKE_INSTALL_PREFIX=/home/cromanma/ros2_ws/src/ur5e_description/install/ur5e_description
+[1.045s] Invoking command in '/home/cromanma/ros2_ws/src/ur5e_description/build/ur5e_description': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/cromanma/ros2_ws/install/moveit_configs_utils:/home/cromanma/ros2_ws/install/launch_param_builder:/home/cromanma/ros2_ws/install/detection:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --build /home/cromanma/ros2_ws/src/ur5e_description/build/ur5e_description -- -j12 -l12
+[1.075s] Invoked command in '/home/cromanma/ros2_ws/src/ur5e_description/build/ur5e_description' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/cromanma/ros2_ws/install/moveit_configs_utils:/home/cromanma/ros2_ws/install/launch_param_builder:/home/cromanma/ros2_ws/install/detection:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --build /home/cromanma/ros2_ws/src/ur5e_description/build/ur5e_description -- -j12 -l12
+[1.084s] Invoking command in '/home/cromanma/ros2_ws/src/ur5e_description/build/ur5e_description': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/cromanma/ros2_ws/install/moveit_configs_utils:/home/cromanma/ros2_ws/install/launch_param_builder:/home/cromanma/ros2_ws/install/detection:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --install /home/cromanma/ros2_ws/src/ur5e_description/build/ur5e_description
+[1.089s] -- Install configuration: ""
+[1.089s] -- Installing: /home/cromanma/ros2_ws/src/ur5e_description/install/ur5e_description/share/ur5e_description/config
+[1.089s] -- Installing: /home/cromanma/ros2_ws/src/ur5e_description/install/ur5e_description/share/ur5e_description/config/ur3
+[1.089s] -- Installing: /home/cromanma/ros2_ws/src/ur5e_description/install/ur5e_description/share/ur5e_description/config/ur3/visual_parameters.yaml
+[1.090s] -- Installing: /home/cromanma/ros2_ws/src/ur5e_description/install/ur5e_description/share/ur5e_description/config/ur3/physical_parameters.yaml
+[1.090s] -- Installing: /home/cromanma/ros2_ws/src/ur5e_description/install/ur5e_description/share/ur5e_description/config/ur3/default_kinematics.yaml
+[1.090s] -- Installing: /home/cromanma/ros2_ws/src/ur5e_description/install/ur5e_description/share/ur5e_description/config/ur3/joint_limits.yaml
+[1.090s] -- Installing: /home/cromanma/ros2_ws/src/ur5e_description/install/ur5e_description/share/ur5e_description/config/visual_parameters_claw.yaml
+[1.091s] -- Installing: /home/cromanma/ros2_ws/src/ur5e_description/install/ur5e_description/share/ur5e_description/config/initial_positions.yaml
+[1.091s] -- Installing: /home/cromanma/ros2_ws/src/ur5e_description/install/ur5e_description/share/ur5e_description/config/ur3e
+[1.091s] -- Installing: /home/cromanma/ros2_ws/src/ur5e_description/install/ur5e_description/share/ur5e_description/config/ur3e/visual_parameters.yaml
+[1.091s] -- Installing: /home/cromanma/ros2_ws/src/ur5e_description/install/ur5e_description/share/ur5e_description/config/ur3e/physical_parameters.yaml
+[1.091s] -- Installing: /home/cromanma/ros2_ws/src/ur5e_description/install/ur5e_description/share/ur5e_description/config/ur3e/default_kinematics.yaml
+[1.091s] -- Installing: /home/cromanma/ros2_ws/src/ur5e_description/install/ur5e_description/share/ur5e_description/config/ur3e/joint_limits.yaml
+[1.091s] -- Installing: /home/cromanma/ros2_ws/src/ur5e_description/install/ur5e_description/share/ur5e_description/config/ur10e
+[1.091s] -- Installing: /home/cromanma/ros2_ws/src/ur5e_description/install/ur5e_description/share/ur5e_description/config/ur10e/visual_parameters.yaml
+[1.091s] -- Installing: /home/cromanma/ros2_ws/src/ur5e_description/install/ur5e_description/share/ur5e_description/config/ur10e/physical_parameters.yaml
+[1.091s] -- Installing: /home/cromanma/ros2_ws/src/ur5e_description/install/ur5e_description/share/ur5e_description/config/ur10e/default_kinematics.yaml
+[1.091s] -- Installing: /home/cromanma/ros2_ws/src/ur5e_description/install/ur5e_description/share/ur5e_description/config/ur10e/joint_limits.yaml
+[1.091s] -- Installing: /home/cromanma/ros2_ws/src/ur5e_description/install/ur5e_description/share/ur5e_description/config/ur30
+[1.091s] -- Installing: /home/cromanma/ros2_ws/src/ur5e_description/install/ur5e_description/share/ur5e_description/config/ur30/visual_parameters.yaml
+[1.091s] -- Installing: /home/cromanma/ros2_ws/src/ur5e_description/install/ur5e_description/share/ur5e_description/config/ur30/physical_parameters.yaml
+[1.091s] -- Installing: /home/cromanma/ros2_ws/src/ur5e_description/install/ur5e_description/share/ur5e_description/config/ur30/default_kinematics.yaml
+[1.092s] -- Installing: /home/cromanma/ros2_ws/src/ur5e_description/install/ur5e_description/share/ur5e_description/config/ur30/joint_limits.yaml
+[1.092s] -- Installing: /home/cromanma/ros2_ws/src/ur5e_description/install/ur5e_description/share/ur5e_description/config/ur_controllers.yaml
+[1.092s] -- Installing: /home/cromanma/ros2_ws/src/ur5e_description/install/ur5e_description/share/ur5e_description/config/ur20
+[1.092s] -- Installing: /home/cromanma/ros2_ws/src/ur5e_description/install/ur5e_description/share/ur5e_description/config/ur20/visual_parameters.yaml
+[1.092s] -- Installing: /home/cromanma/ros2_ws/src/ur5e_description/install/ur5e_description/share/ur5e_description/config/ur20/physical_parameters.yaml
+[1.092s] -- Installing: /home/cromanma/ros2_ws/src/ur5e_description/install/ur5e_description/share/ur5e_description/config/ur20/default_kinematics.yaml
+[1.092s] -- Installing: /home/cromanma/ros2_ws/src/ur5e_description/install/ur5e_description/share/ur5e_description/config/ur20/joint_limits.yaml
+[1.092s] -- Installing: /home/cromanma/ros2_ws/src/ur5e_description/install/ur5e_description/share/ur5e_description/config/ur10
+[1.092s] -- Installing: /home/cromanma/ros2_ws/src/ur5e_description/install/ur5e_description/share/ur5e_description/config/ur10/visual_parameters.yaml
+[1.092s] -- Installing: /home/cromanma/ros2_ws/src/ur5e_description/install/ur5e_description/share/ur5e_description/config/ur10/physical_parameters.yaml
+[1.092s] -- Installing: /home/cromanma/ros2_ws/src/ur5e_description/install/ur5e_description/share/ur5e_description/config/ur10/default_kinematics.yaml
+[1.092s] -- Installing: /home/cromanma/ros2_ws/src/ur5e_description/install/ur5e_description/share/ur5e_description/config/ur10/joint_limits.yaml
+[1.093s] -- Installing: /home/cromanma/ros2_ws/src/ur5e_description/install/ur5e_description/share/ur5e_description/config/ur16e
+[1.093s] -- Installing: /home/cromanma/ros2_ws/src/ur5e_description/install/ur5e_description/share/ur5e_description/config/ur16e/visual_parameters.yaml
+[1.093s] -- Installing: /home/cromanma/ros2_ws/src/ur5e_description/install/ur5e_description/share/ur5e_description/config/ur16e/physical_parameters.yaml
+[1.093s] -- Installing: /home/cromanma/ros2_ws/src/ur5e_description/install/ur5e_description/share/ur5e_description/config/ur16e/default_kinematics.yaml
+[1.093s] -- Installing: /home/cromanma/ros2_ws/src/ur5e_description/install/ur5e_description/share/ur5e_description/config/ur16e/joint_limits.yaml
+[1.093s] -- Installing: /home/cromanma/ros2_ws/src/ur5e_description/install/ur5e_description/share/ur5e_description/config/ur5e
+[1.093s] -- Installing: /home/cromanma/ros2_ws/src/ur5e_description/install/ur5e_description/share/ur5e_description/config/ur5e/visual_parameters.yaml
+[1.093s] -- Installing: /home/cromanma/ros2_ws/src/ur5e_description/install/ur5e_description/share/ur5e_description/config/ur5e/physical_parameters.yaml
+[1.093s] -- Installing: /home/cromanma/ros2_ws/src/ur5e_description/install/ur5e_description/share/ur5e_description/config/ur5e/default_kinematics.yaml
+[1.093s] -- Installing: /home/cromanma/ros2_ws/src/ur5e_description/install/ur5e_description/share/ur5e_description/config/ur5e/joint_limits.yaml
+[1.093s] -- Installing: /home/cromanma/ros2_ws/src/ur5e_description/install/ur5e_description/share/ur5e_description/config/ur5
+[1.093s] -- Installing: /home/cromanma/ros2_ws/src/ur5e_description/install/ur5e_description/share/ur5e_description/config/ur5/visual_parameters.yaml
+[1.093s] -- Installing: /home/cromanma/ros2_ws/src/ur5e_description/install/ur5e_description/share/ur5e_description/config/ur5/physical_parameters.yaml
+[1.093s] -- Installing: /home/cromanma/ros2_ws/src/ur5e_description/install/ur5e_description/share/ur5e_description/config/ur5/default_kinematics.yaml
+[1.094s] -- Installing: /home/cromanma/ros2_ws/src/ur5e_description/install/ur5e_description/share/ur5e_description/config/ur5/joint_limits.yaml
+[1.094s] -- Installing: /home/cromanma/ros2_ws/src/ur5e_description/install/ur5e_description/share/ur5e_description/launch
+[1.094s] -- Installing: /home/cromanma/ros2_ws/src/ur5e_description/install/ur5e_description/share/ur5e_description/launch/view_ur.launch.py
+[1.094s] -- Installing: /home/cromanma/ros2_ws/src/ur5e_description/install/ur5e_description/share/ur5e_description/launch/view_ur_gazebo.launch.py
+[1.094s] -- Installing: /home/cromanma/ros2_ws/src/ur5e_description/install/ur5e_description/share/ur5e_description/meshes
+[1.094s] -- Installing: /home/cromanma/ros2_ws/src/ur5e_description/install/ur5e_description/share/ur5e_description/meshes/model.config
+[1.094s] -- Installing: /home/cromanma/ros2_ws/src/ur5e_description/install/ur5e_description/share/ur5e_description/meshes/collision
+[1.094s] -- Installing: /home/cromanma/ros2_ws/src/ur5e_description/install/ur5e_description/share/ur5e_description/meshes/collision/robotiq_85_finger_tip_link.stl
+[1.094s] -- Installing: /home/cromanma/ros2_ws/src/ur5e_description/install/ur5e_description/share/ur5e_description/meshes/collision/robotiq_85_base_link.stl
+[1.096s] -- Installing: /home/cromanma/ros2_ws/src/ur5e_description/install/ur5e_description/share/ur5e_description/meshes/collision/robotiq_85_inner_knuckle_link.stl
+[1.097s] -- Installing: /home/cromanma/ros2_ws/src/ur5e_description/install/ur5e_description/share/ur5e_description/meshes/collision/robotiq_85_knuckle_link.stl
+[1.097s] -- Installing: /home/cromanma/ros2_ws/src/ur5e_description/install/ur5e_description/share/ur5e_description/meshes/collision/robotiq_85_finger_link.stl
+[1.097s] -- Installing: /home/cromanma/ros2_ws/src/ur5e_description/install/ur5e_description/share/ur5e_description/meshes/visual
+[1.097s] -- Installing: /home/cromanma/ros2_ws/src/ur5e_description/install/ur5e_description/share/ur5e_description/meshes/visual/log
+[1.097s] -- Installing: /home/cromanma/ros2_ws/src/ur5e_description/install/ur5e_description/share/ur5e_description/meshes/visual/log/build_2025-02-10_14-23-18
+[1.098s] -- Installing: /home/cromanma/ros2_ws/src/ur5e_description/install/ur5e_description/share/ur5e_description/meshes/visual/log/build_2025-02-10_14-23-18/events.log
+[1.098s] -- Installing: /home/cromanma/ros2_ws/src/ur5e_description/install/ur5e_description/share/ur5e_description/meshes/visual/log/build_2025-02-10_14-23-18/logger_all.log
+[1.098s] -- Installing: /home/cromanma/ros2_ws/src/ur5e_description/install/ur5e_description/share/ur5e_description/meshes/visual/log/COLCON_IGNORE
+[1.098s] -- Installing: /home/cromanma/ros2_ws/src/ur5e_description/install/ur5e_description/share/ur5e_description/meshes/visual/build
+[1.098s] -- Installing: /home/cromanma/ros2_ws/src/ur5e_description/install/ur5e_description/share/ur5e_description/meshes/visual/build/COLCON_IGNORE
+[1.098s] -- Installing: /home/cromanma/ros2_ws/src/ur5e_description/install/ur5e_description/share/ur5e_description/meshes/visual/robotiq_85_finger_tip_link.dae
+[1.098s] -- Installing: /home/cromanma/ros2_ws/src/ur5e_description/install/ur5e_description/share/ur5e_description/meshes/visual/robotiq_85_finger_link.dae
+[1.099s] -- Installing: /home/cromanma/ros2_ws/src/ur5e_description/install/ur5e_description/share/ur5e_description/meshes/visual/install
+[1.099s] -- Installing: /home/cromanma/ros2_ws/src/ur5e_description/install/ur5e_description/share/ur5e_description/meshes/visual/install/local_setup.sh
+[1.099s] -- Installing: /home/cromanma/ros2_ws/src/ur5e_description/install/ur5e_description/share/ur5e_description/meshes/visual/install/setup.sh
+[1.099s] -- Installing: /home/cromanma/ros2_ws/src/ur5e_description/install/ur5e_description/share/ur5e_description/meshes/visual/install/local_setup.zsh
+[1.099s] -- Installing: /home/cromanma/ros2_ws/src/ur5e_description/install/ur5e_description/share/ur5e_description/meshes/visual/install/setup.zsh
+[1.099s] -- Installing: /home/cromanma/ros2_ws/src/ur5e_description/install/ur5e_description/share/ur5e_description/meshes/visual/install/_local_setup_util_ps1.py
+[1.099s] -- Installing: /home/cromanma/ros2_ws/src/ur5e_description/install/ur5e_description/share/ur5e_description/meshes/visual/install/COLCON_IGNORE
+[1.099s] -- Installing: /home/cromanma/ros2_ws/src/ur5e_description/install/ur5e_description/share/ur5e_description/meshes/visual/install/_local_setup_util_sh.py
+[1.099s] -- Installing: /home/cromanma/ros2_ws/src/ur5e_description/install/ur5e_description/share/ur5e_description/meshes/visual/install/local_setup.bash
+[1.099s] -- Installing: /home/cromanma/ros2_ws/src/ur5e_description/install/ur5e_description/share/ur5e_description/meshes/visual/install/setup.bash
+[1.099s] -- Installing: /home/cromanma/ros2_ws/src/ur5e_description/install/ur5e_description/share/ur5e_description/meshes/visual/install/setup.ps1
+[1.100s] -- Installing: /home/cromanma/ros2_ws/src/ur5e_description/install/ur5e_description/share/ur5e_description/meshes/visual/install/local_setup.ps1
+[1.100s] -- Installing: /home/cromanma/ros2_ws/src/ur5e_description/install/ur5e_description/share/ur5e_description/meshes/visual/robotiq_85_knuckle_link.dae
+[1.100s] -- Installing: /home/cromanma/ros2_ws/src/ur5e_description/install/ur5e_description/share/ur5e_description/meshes/visual/robotiq_85_base_link.dae
+[1.103s] -- Installing: /home/cromanma/ros2_ws/src/ur5e_description/install/ur5e_description/share/ur5e_description/meshes/visual/robotiq_85_inner_knuckle_link.dae
+[1.103s] -- Installing: /home/cromanma/ros2_ws/src/ur5e_description/install/ur5e_description/share/ur5e_description/meshes/realsense_camera
+[1.103s] -- Installing: /home/cromanma/ros2_ws/src/ur5e_description/install/ur5e_description/share/ur5e_description/meshes/realsense_camera/plug_collision.stl
+[1.103s] -- Installing: /home/cromanma/ros2_ws/src/ur5e_description/install/ur5e_description/share/ur5e_description/meshes/realsense_camera/d455.stl
+[1.104s] -- Installing: /home/cromanma/ros2_ws/src/ur5e_description/install/ur5e_description/share/ur5e_description/meshes/realsense_camera/plug.stl
+[1.105s] -- Installing: /home/cromanma/ros2_ws/src/ur5e_description/install/ur5e_description/share/ur5e_description/meshes/ur5e
+[1.105s] -- Installing: /home/cromanma/ros2_ws/src/ur5e_description/install/ur5e_description/share/ur5e_description/meshes/ur5e/collision
+[1.105s] -- Installing: /home/cromanma/ros2_ws/src/ur5e_description/install/ur5e_description/share/ur5e_description/meshes/ur5e/collision/wrist2.stl
+[1.106s] -- Installing: /home/cromanma/ros2_ws/src/ur5e_description/install/ur5e_description/share/ur5e_description/meshes/ur5e/collision/base.stl
+[1.106s] -- Installing: /home/cromanma/ros2_ws/src/ur5e_description/install/ur5e_description/share/ur5e_description/meshes/ur5e/collision/wrist1.stl
+[1.106s] -- Installing: /home/cromanma/ros2_ws/src/ur5e_description/install/ur5e_description/share/ur5e_description/meshes/ur5e/collision/wrist3.stl
+[1.107s] -- Installing: /home/cromanma/ros2_ws/src/ur5e_description/install/ur5e_description/share/ur5e_description/meshes/ur5e/collision/upperarm.stl
+[1.107s] -- Installing: /home/cromanma/ros2_ws/src/ur5e_description/install/ur5e_description/share/ur5e_description/meshes/ur5e/collision/forearm.stl
+[1.107s] -- Installing: /home/cromanma/ros2_ws/src/ur5e_description/install/ur5e_description/share/ur5e_description/meshes/ur5e/collision/shoulder.stl
+[1.108s] -- Installing: /home/cromanma/ros2_ws/src/ur5e_description/install/ur5e_description/share/ur5e_description/meshes/ur5e/visual
+[1.108s] -- Installing: /home/cromanma/ros2_ws/src/ur5e_description/install/ur5e_description/share/ur5e_description/meshes/ur5e/visual/wrist2.dae
+[1.110s] -- Installing: /home/cromanma/ros2_ws/src/ur5e_description/install/ur5e_description/share/ur5e_description/meshes/ur5e/visual/wrist1.dae
+[1.112s] -- Installing: /home/cromanma/ros2_ws/src/ur5e_description/install/ur5e_description/share/ur5e_description/meshes/ur5e/visual/shoulder.dae
+[1.114s] -- Installing: /home/cromanma/ros2_ws/src/ur5e_description/install/ur5e_description/share/ur5e_description/meshes/ur5e/visual/base.dae
+[1.115s] -- Installing: /home/cromanma/ros2_ws/src/ur5e_description/install/ur5e_description/share/ur5e_description/meshes/ur5e/visual/upperarm.dae
+[1.118s] -- Installing: /home/cromanma/ros2_ws/src/ur5e_description/install/ur5e_description/share/ur5e_description/meshes/ur5e/visual/forearm.dae
+[1.120s] -- Installing: /home/cromanma/ros2_ws/src/ur5e_description/install/ur5e_description/share/ur5e_description/meshes/ur5e/visual/wrist3.dae
+[1.120s] -- Installing: /home/cromanma/ros2_ws/src/ur5e_description/install/ur5e_description/share/ur5e_description/rviz
+[1.120s] -- Installing: /home/cromanma/ros2_ws/src/ur5e_description/install/ur5e_description/share/ur5e_description/rviz/view_robot.rviz
+[1.120s] -- Installing: /home/cromanma/ros2_ws/src/ur5e_description/install/ur5e_description/share/ur5e_description/urdf
+[1.120s] -- Installing: /home/cromanma/ros2_ws/src/ur5e_description/install/ur5e_description/share/ur5e_description/urdf/robotiq_85_gripper.urdf.xacro
+[1.120s] -- Installing: /home/cromanma/ros2_ws/src/ur5e_description/install/ur5e_description/share/ur5e_description/urdf/robotiq_85_gripper.transmission.xacro
+[1.120s] -- Installing: /home/cromanma/ros2_ws/src/ur5e_description/install/ur5e_description/share/ur5e_description/urdf/ros2_control_mock_hardware.xacro
+[1.121s] -- Installing: /home/cromanma/ros2_ws/src/ur5e_description/install/ur5e_description/share/ur5e_description/urdf/claw1_xacro
+[1.121s] -- Installing: /home/cromanma/ros2_ws/src/ur5e_description/install/ur5e_description/share/ur5e_description/urdf/_materials.urdf.xacro
+[1.121s] -- Installing: /home/cromanma/ros2_ws/src/ur5e_description/install/ur5e_description/share/ur5e_description/urdf/inc
+[1.121s] -- Installing: /home/cromanma/ros2_ws/src/ur5e_description/install/ur5e_description/share/ur5e_description/urdf/inc/ur_transmissions.xacro
+[1.121s] -- Installing: /home/cromanma/ros2_ws/src/ur5e_description/install/ur5e_description/share/ur5e_description/urdf/inc/ur_sensors.xacro
+[1.121s] -- Installing: /home/cromanma/ros2_ws/src/ur5e_description/install/ur5e_description/share/ur5e_description/urdf/inc/ur_joint_control.xacro
+[1.121s] -- Installing: /home/cromanma/ros2_ws/src/ur5e_description/install/ur5e_description/share/ur5e_description/urdf/inc/ur_common.xacro
+[1.121s] -- Installing: /home/cromanma/ros2_ws/src/ur5e_description/install/ur5e_description/share/ur5e_description/urdf/_d455.urdf.xacro
+[1.121s] -- Installing: /home/cromanma/ros2_ws/src/ur5e_description/install/ur5e_description/share/ur5e_description/urdf/ur_macro.xacro
+[1.121s] -- Installing: /home/cromanma/ros2_ws/src/ur5e_description/install/ur5e_description/share/ur5e_description/urdf/robotiq_85_gripper_sim_base.urdf.xacro
+[1.122s] -- Installing: /home/cromanma/ros2_ws/src/ur5e_description/install/ur5e_description/share/ur5e_description/urdf/ur.urdf.xacro
+[1.122s] -- Installing: /home/cromanma/ros2_ws/src/ur5e_description/install/ur5e_description/share/ur5e_description/urdf/ur_mocked.urdf.xacro
+[1.122s] -- Installing: /home/cromanma/ros2_ws/src/ur5e_description/install/ur5e_description/share/ur5e_description/urdf/_usb_plug.urdf.xacro
+[1.122s] -- Installing: /home/cromanma/ros2_ws/src/ur5e_description/install/ur5e_description/share/ur5e_description/urdf/robotiq_85_gripper2.xacro
+[1.122s] -- Installing: /home/cromanma/ros2_ws/src/ur5e_description/install/ur5e_description/share/ur5e_description/test
+[1.122s] -- Installing: /home/cromanma/ros2_ws/src/ur5e_description/install/ur5e_description/share/ur5e_description/test/test_ur_urdf_xacro.py
+[1.122s] -- Installing: /home/cromanma/ros2_ws/src/ur5e_description/install/ur5e_description/share/ur5e_description/test/test_view_ur_launch.py
+[1.122s] -- Installing: /home/cromanma/ros2_ws/src/ur5e_description/install/ur5e_description/share/ament_index/resource_index/package_run_dependencies/ur5e_description
+[1.122s] -- Installing: /home/cromanma/ros2_ws/src/ur5e_description/install/ur5e_description/share/ament_index/resource_index/parent_prefix_path/ur5e_description
+[1.122s] -- Installing: /home/cromanma/ros2_ws/src/ur5e_description/install/ur5e_description/share/ur5e_description/environment/ament_prefix_path.sh
+[1.122s] -- Installing: /home/cromanma/ros2_ws/src/ur5e_description/install/ur5e_description/share/ur5e_description/environment/ament_prefix_path.dsv
+[1.122s] -- Installing: /home/cromanma/ros2_ws/src/ur5e_description/install/ur5e_description/share/ur5e_description/environment/path.sh
+[1.122s] -- Installing: /home/cromanma/ros2_ws/src/ur5e_description/install/ur5e_description/share/ur5e_description/environment/path.dsv
+[1.122s] -- Installing: /home/cromanma/ros2_ws/src/ur5e_description/install/ur5e_description/share/ur5e_description/local_setup.bash
+[1.122s] -- Installing: /home/cromanma/ros2_ws/src/ur5e_description/install/ur5e_description/share/ur5e_description/local_setup.sh
+[1.122s] -- Installing: /home/cromanma/ros2_ws/src/ur5e_description/install/ur5e_description/share/ur5e_description/local_setup.zsh
+[1.122s] -- Installing: /home/cromanma/ros2_ws/src/ur5e_description/install/ur5e_description/share/ur5e_description/local_setup.dsv
+[1.123s] -- Installing: /home/cromanma/ros2_ws/src/ur5e_description/install/ur5e_description/share/ur5e_description/package.dsv
+[1.123s] -- Installing: /home/cromanma/ros2_ws/src/ur5e_description/install/ur5e_description/share/ament_index/resource_index/packages/ur5e_description
+[1.123s] -- Installing: /home/cromanma/ros2_ws/src/ur5e_description/install/ur5e_description/share/ur5e_description/cmake/ur5e_descriptionConfig.cmake
+[1.123s] -- Installing: /home/cromanma/ros2_ws/src/ur5e_description/install/ur5e_description/share/ur5e_description/cmake/ur5e_descriptionConfig-version.cmake
+[1.123s] -- Installing: /home/cromanma/ros2_ws/src/ur5e_description/install/ur5e_description/share/ur5e_description/package.xml
+[1.124s] Invoked command in '/home/cromanma/ros2_ws/src/ur5e_description/build/ur5e_description' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/cromanma/ros2_ws/install/moveit_configs_utils:/home/cromanma/ros2_ws/install/launch_param_builder:/home/cromanma/ros2_ws/install/detection:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --install /home/cromanma/ros2_ws/src/ur5e_description/build/ur5e_description

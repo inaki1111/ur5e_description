@@ -1,10 +1,23 @@
 <?xml version="1.0"?>
-
-
 <robot name="robotiq_85_gripper" xmlns:xacro="http://ros.org/wiki/xacro">
     <xacro:include filename="$(find ur5e_description)/urdf/robotiq_85_gripper.transmission.xacro" />
+    <xacro:property name="left_knuckle_mass" value="0.185"/>
+    <xacro:property name="left_knuckle_ixx" value="0.000016"/>
+    <xacro:property name="left_knuckle_ixy" value="0.0"/>
+    <xacro:property name="left_knuckle_ixz" value="0.0"/>
+    <xacro:property name="left_knuckle_iyy" value="0.000010"/>
+    <xacro:property name="left_knuckle_iyz" value="0.0"/>
+    <xacro:property name="left_knuckle_izz" value="0.000022"/>
 
-    
+    <xacro:property name="right_knuckle_mass" value="0.185"/>
+    <xacro:property name="right_knuckle_ixx" value="0.000016"/>
+    <xacro:property name="right_knuckle_ixy" value="0.0"/>
+    <xacro:property name="right_knuckle_ixz" value="0.0"/>
+    <xacro:property name="right_knuckle_iyy" value="0.000010"/>
+    <xacro:property name="right_knuckle_iyz" value="0.0"/>
+    <xacro:property name="right_knuckle_izz" value="0.000022"/>
+    <xacro:property name="mesh_file" value="$(find ur5e_description)/config/visual_parameters_claw.yaml"/>
+
 
     <xacro:macro name="robotiq_85_gripper" params="prefix parent *origin">
 
@@ -17,12 +30,12 @@
         <link name="${prefix}robotiq_85_base_link">
             <visual>
                 <geometry>
-                    <mesh filename="file://$(find ur5e_description)/meshes/robotiq_85/visual/robotiq_85_base_link.dae"/>
+                    <xacro:get_mesh name="base" type="visual"/>
                 </geometry>
             </visual>
             <collision>
                 <geometry>
-                    <mesh filename="file://$(find ur5e_description)/meshes/robotiq_85/collision/robotiq_85_base_link.stl"/>
+                    <xacro:get_mesh name="base" type="collision"/>
                 </geometry>
             </collision>
             <inertial>
@@ -54,46 +67,50 @@
         <link name="${prefix}robotiq_85_left_knuckle_link">
             <visual>
                 <geometry>
-                    <mesh filename="file://$(find ur5e_description)/meshes/robotiq_85/visual/robotiq_85_knuckle_link.dae"/>
+                    <xacro:get_mesh name="knuckle" type="visual"/>
                 </geometry>
             </visual>
             <collision>
                 <geometry>
-                    <mesh filename="file://$(find ur5e_description)/meshes/robotiq_85/collision/robotiq_85_knuckle_link.stl"/>
+                    <xacro:get_mesh name="knuckle" type="collision"/>
+                
                 </geometry>
             </collision>
             <inertial>
-                <mass value="0.185" />
+                <mass value="${left_knuckle_mass}" />
                 <origin xyz="0.0 0.0 0.0" />
-                <inertia ixx = "0.000016"
-                         ixy = "0.0" 
-                         ixz = "0.0"
-                         iyy = "0.000010"
-                         iyz = "0.0" 
-                         izz = "0.000022" />
+                <inertia 
+                    ixx="${left_knuckle_ixx}" 
+                    ixy="${left_knuckle_ixy}" 
+                    ixz="${left_knuckle_ixz}"
+                    iyy="${left_knuckle_iyy}" 
+                    iyz="${left_knuckle_iyz}" 
+                    izz="${left_knuckle_izz}" />
             </inertial>
         </link> 
 
         <link name="${prefix}robotiq_85_right_knuckle_link">
             <visual>
                 <geometry>
-                    <mesh filename="file://$(find ur5e_description)/meshes/robotiq_85/visual/robotiq_85_knuckle_link.dae"/>
+                    <xacro:get_mesh name="knuckle" type="visual"/>
+
                 </geometry>
             </visual>
             <collision>
                 <geometry>
-                    <mesh filename="file://$(find ur5e_description)/meshes/robotiq_85/collision/robotiq_85_knuckle_link.stl"/>
+                    <xacro:get_mesh name="knuckle" type="collision"/>
                 </geometry>
             </collision>
             <inertial>
-                <mass value="0.185" />
+                <mass value="0.018491" />
                 <origin xyz="0.0 0.0 0.0" />
-                <inertia ixx = "0.000016"
-                         ixy = "0.0" 
-                         ixz = "0.0"
-                         iyy = "0.000010"
-                         iyz = "0.0" 
-                         izz = "0.000022" />
+                <inertia 
+                    ixx="${right_knuckle_ixx}" 
+                    ixy="${right_knuckle_ixy}" 
+                    ixz="${right_knuckle_ixz}"
+                    iyy="${right_knuckle_iyy}" 
+                    iyz="${right_knuckle_iyz}" 
+                    izz="${right_knuckle_izz}" />
             </inertial>
         </link>
 
@@ -112,12 +129,12 @@
         <link name="${prefix}robotiq_85_left_finger_link">
             <visual>
                 <geometry>
-                    <mesh filename="file://$(find ur5e_description)/meshes/robotiq_85/visual/robotiq_85_finger_link.dae"/>
+                    <xacro:get_mesh name="finger" type="visual"/>
                 </geometry>
             </visual>
             <collision>
                 <geometry>
-                    <mesh filename="file://$(find ur5e_description)/meshes/robotiq_85/collision/robotiq_85_finger_link.stl"/>
+                    <xacro:get_mesh name="finger" type="collision"/>
                 </geometry>
             </collision>
             <inertial>
@@ -132,12 +149,12 @@
         <link name="${prefix}robotiq_85_right_finger_link">
             <visual>
                 <geometry>
-                    <mesh filename="file://$(find ur5e_description)/meshes/robotiq_85/visual/robotiq_85_finger_link.dae"/>
+                    <xacro:get_mesh name="finger" type="visual"/>
                 </geometry>
             </visual>
             <collision>
                 <geometry>
-                    <mesh filename="file://$(find ur5e_description)/meshes/robotiq_85/collision/robotiq_85_finger_link.stl"/>
+                    <xacro:get_mesh name="finger" type="collision"/>
                 </geometry>
             </collision>
             <inertial>
@@ -170,12 +187,12 @@
         <link name="${prefix}robotiq_85_left_inner_knuckle_link">
             <visual>
                 <geometry>
-                    <mesh filename="file://$(find ur5e_description)/meshes/robotiq_85/visual/robotiq_85_inner_knuckle_link.dae"/>
+                    <xacro:get_mesh name="inner_knuckle" type="visual"/>
                 </geometry>
             </visual>
             <collision>
                 <geometry>
-                    <mesh filename="file://$(find ur5e_description)/meshes/robotiq_85/collision/robotiq_85_inner_knuckle_link.stl"/>
+                    <xacro:get_mesh name="inner_knuckle" type="collision"/>
                 </geometry>
             </collision>
             <inertial>
@@ -189,12 +206,12 @@
         <link name="${prefix}robotiq_85_right_inner_knuckle_link">
             <visual>
                 <geometry>
-                    <mesh filename="file://$(find ur5e_description)/meshes/robotiq_85/visual/robotiq_85_inner_knuckle_link.dae"/>
+                    <xacro:get_mesh name="inner_knuckle" type="visual"/>  
                 </geometry>
             </visual>
             <collision>
                 <geometry>
-                    <mesh filename="file://$(find ur5e_description)/meshes/robotiq_85/collision/robotiq_85_inner_knuckle_link.stl"/>
+                    <xacro:get_mesh name="inner_knuckle" type="collision"/> 
                 </geometry>
             </collision>
             <inertial>
@@ -228,12 +245,12 @@
         <link name="${prefix}robotiq_85_left_finger_tip_link">
             <visual>
                 <geometry>
-                    <mesh filename="file://$(find ur5e_description)/meshes/robotiq_85/visual/robotiq_85_finger_tip_link.dae"/>
+                    <xacro:get_mesh name="finger_tip" type="visual"/> 
                 </geometry>
             </visual>
             <collision>
                 <geometry>
-                    <mesh filename="file://$(find ur5e_description)/meshes/robotiq_85/collision/robotiq_85_finger_tip_link.stl"/>
+                <xacro:get_mesh name="finger_tip" type="collision"/> 
                 </geometry>
             </collision>
             <inertial>
@@ -248,12 +265,12 @@
         <link name="${prefix}robotiq_85_right_finger_tip_link">
             <visual>
                 <geometry>
-                    <mesh filename="file://$(find ur5e_description)/meshes/robotiq_85/visual/robotiq_85_finger_tip_link.dae"/>
+                    <xacro:get_mesh name="finger_tip" type="visual"/> 
                 </geometry>
             </visual>
             <collision>
                 <geometry>
-                    <mesh filename="file://$(find ur5e_description)/meshes/robotiq_85/collision/robotiq_85_finger_tip_link.stl"/>
+                    <xacro:get_mesh name="finger_tip" type="collision"/>
                 </geometry>
             </collision>
             <inertial>

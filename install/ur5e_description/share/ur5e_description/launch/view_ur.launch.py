@@ -27,7 +27,7 @@
 # POSSIBILITY OF SUCH DAMAGE.
 #
 # Author: Denis Stogl
-# export gazebo path export GAZEBO_MODEL_PATH=~/ros2_ws/src/ur5e_description
+
 from launch import LaunchDescription
 from launch.actions import DeclareLaunchArgument
 from launch.substitutions import Command, FindExecutable, LaunchConfiguration, PathJoinSubstitution

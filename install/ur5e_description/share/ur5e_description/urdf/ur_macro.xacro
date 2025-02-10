@@ -83,13 +83,13 @@
       <visual>
         <origin xyz="0 0 0" rpy="0 0 ${pi}"/>
         <geometry>
-	        <mesh filename="file://$(find ur5e_description)/meshes/ur5e/visual/base.dae"/>
+	        <mesh filename="file://$(find ur5e_description)/meshes/ur5e/visual/base.dae" scale="0.001 0.001 0.001" />
         </geometry>
       </visual>
       <collision>
         <origin xyz="0 0 0" rpy="0 0 ${pi}"/>
         <geometry>
-	        <mesh filename="file://$(find ur5e_description)/meshes/ur5e/collision/base.stl"/>
+	        <mesh filename="file://$(find ur5e_description)/meshes/ur5e/collision/base.stl" scale="0.001 0.001 0.001" />
         </geometry>
       </collision>
       <xacro:cylinder_inertial radius="${base_inertia_radius}" length="${base_inertia_length}" mass="${base_mass}">
@@ -100,14 +100,14 @@
       <visual>
         <origin xyz="0 0 0" rpy="0 0 ${pi}"/>
         <geometry>
-          <mesh filename="file://$(find ur5e_description)/meshes/ur5e/visual/shoulder.dae"/>
+          <mesh filename="file://$(find ur5e_description)/meshes/realsense_camera/d455.stl" scale="0.001 0.001 0.001" />
 
         </geometry>
       </visual>
       <collision>
         <origin xyz="0 0 0" rpy="0 0 ${pi}"/>
         <geometry>
-          <mesh filename="file://$(find ur5e_description)/meshes/ur5e/collision/shoulder.stl"/>
+          <mesh filename="file://$(find ur5e_description)/meshes/realsense_camera/d455.stl" scale="0.001 0.001 0.001" />
 
         </geometry>
       </collision>
@@ -127,14 +127,14 @@
       <visual>
         <origin xyz="0 0 ${shoulder_offset}" rpy="${pi/2} 0 ${-pi/2}"/>
         <geometry>
-        <mesh filename="file://$(find ur5e_description)/meshes/ur5e/visual/upperarm.dae"/>
+        <mesh filename="file://$(find ur5e_description)/meshes/realsense_camera/d455.stl" scale="0.001 0.001 0.001" />
 
         </geometry>
       </visual>
       <collision>
         <origin xyz="0 0 ${shoulder_offset}" rpy="${pi/2} 0 ${-pi/2}"/>
         <geometry>
-	        <mesh filename="file://$(find ur5e_description)/meshes/ur5e/collision/upperarm.stl"/>
+	        <mesh filename="file://$(find ur5e_description)/meshes/realsense_camera/d455.stl" scale="0.001 0.001 0.001" />
 
         </geometry>
       </collision>
@@ -155,14 +155,14 @@
       <visual>
         <origin xyz="0 0 ${elbow_offset}" rpy="${pi/2} 0 ${-pi/2}"/>
         <geometry>
-	        <mesh filename="file://$(find ur5e_description)/meshes/ur5e/visual/forearm.dae"/>
+	        <mesh filename="file://$(find ur5e_description)/meshes/realsense_camera/d455.stl" scale="0.001 0.001 0.001" />
 
         </geometry>
       </visual>
       <collision>
         <origin xyz="0 0 ${elbow_offset}" rpy="${pi/2} 0 ${-pi/2}"/>
         <geometry>
-	        <mesh filename="file://$(find ur5e_description)/meshes/ur5e/collision/forearm.stl"/>
+	        <mesh filename="file://$(find ur5e_description)/meshes/realsense_camera/d455.stl" scale="0.001 0.001 0.001" />
 
         </geometry>
       </collision>
@@ -184,14 +184,14 @@
       <visual>
       	<origin xyz="0 0 ${visual_params}" rpy="${pi/2} 0 0"/>
         <geometry>
-	        <mesh filename="file://$(find ur5e_description)/meshes/ur5e/visual/wrist1.dae"/>
+	        <mesh filename="file://$(find ur5e_description)/meshes/realsense_camera/d455.stl" scale="0.001 0.001 0.001" />
 
         </geometry>
       </visual>
       <collision>
         <origin xyz="0 0 ${visual_params}" rpy="${pi/2} 0 0"/>
         <geometry>
-	        <mesh filename="file://$(find ur5e_description)/meshes/ur5e/collision/wrist1.stl"/>
+	        <mesh filename="file://$(find ur5e_description)/meshes/realsense_camera/d455.stl" scale="0.001 0.001 0.001" />
 
         </geometry>
       </collision>
@@ -213,14 +213,14 @@
       <visual>
         <origin xyz="0 0 ${visual_params}" rpy="0 0 0"/>
         <geometry>
-	        <mesh filename="file://$(find ur5e_description)/meshes/ur5e/visual/wrist2.dae"/>
+	        <mesh filename="file://$(find ur5e_description)/meshes/realsense_camera/d455.stl" scale="0.001 0.001 0.001" />
 
         </geometry>
       </visual>
       <collision>
         <origin xyz="0 0 ${visual_params}" rpy="0 0 0"/>
         <geometry>
-	        <mesh filename="file://$(find ur5e_description)/meshes/ur5e/collision/wrist2.stl"/>
+	        <mesh filename="file://$(find ur5e_description)/meshes/realsense_camera/d455.stl" scale="0.001 0.001 0.001" />
 
         </geometry>
       </collision>
@@ -242,14 +242,14 @@
       <visual>
         <origin xyz="0 0 ${visual_params}" rpy="${pi/2} 0 0"/>
         <geometry>
-	        <mesh filename="file://$(find ur5e_description)/meshes/ur5e/visual/wrist3.dae"/>
+	        <mesh filename="file://$(find ur5e_description)/meshes/realsense_camera/d455.stl" scale="0.001 0.001 0.001" />
 
         </geometry>
       </visual>
       <collision>
         <origin xyz="0 0 ${visual_params}" rpy="${pi/2} 0 0"/>
         <geometry>
-	        <mesh filename="file://$(find ur5e_description)/meshes/ur5e/collision/wrist3.stl"/>
+	        <mesh filename="file://$(find ur5e_description)/meshes/realsense_camera/d455.stl" scale="0.001 0.001 0.001" />
 
         </geometry>
       </collision>
