@@ -44,7 +44,7 @@ def generate_launch_description():
             "ur_type",
             default_value="ur5e",
             description="Type/series of used UR robot.",
-            choices=["ur3", "ur3e", "ur5", "ur5e", "ur10", "ur10e", "ur16e", "ur20", "ur30"],
+            choices=["ur5", "ur5e"],
         )
     )
     declared_arguments.append(
@@ -72,7 +72,7 @@ def generate_launch_description():
         DeclareLaunchArgument(
             "description_file",
             default_value=PathJoinSubstitution(
-                [FindPackageShare("ur5e_description"), "urdf", "ur.urdf.xacro"]
+                [FindPackageShare("ur5e_description"), "urdf/ur5e", "ur.urdf.xacro"]
             ),
             description="URDF/XACRO description file (absolute path) with the robot.",
         )

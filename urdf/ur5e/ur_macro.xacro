@@ -1,58 +1,9 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://wiki.ros.org/xacro">
-  <!--
-    Base UR robot series xacro macro.
 
-    NOTE this is NOT a URDF. It cannot directly be loaded by consumers
-    expecting a flattened '.urdf' file. See the top-level '.xacro' for that
-    (but note that .xacro must still be processed by the xacro command).
-
-    This file models the base kinematic chain of a UR robot, which then gets
-    parameterised by various configuration files to convert it into a UR3(e),
-    UR5(e), UR10(e) or UR16e.
-
-    NOTE the default kinematic parameters (i.e., link lengths, frame locations,
-    offsets, etc) do not correspond to any particular robot. They are defaults
-    only. There WILL be non-zero offsets between the Forward Kinematics results
-    in TF (i.e., robot_state_publisher) and the values reported by the Teach
-    Pendant.
-
-    For accurate (and robot-specific) transforms, the 'kinematics_parameters_file'
-    parameter MUST point to a .yaml file containing the appropriate values for
-    the targeted robot.
-
-    If using the UniversalRobots/Universal_Robots_ROS_Driver, follow the steps
-    described in the readme of that repository to extract the kinematic
-    calibration from the controller and generate the required .yaml file.
-
-    Main author of the migration to yaml configs Ludovic Delval.
-
-    Contributors to previous versions (in no particular order)
-
-     - Denis Stogl
-     - Lovro Ivanov
-     - Felix Messmer
-     - Kelsey Hawkins
-     - Wim Meeussen
-     - Shaun Edwards
-     - Nadia Hammoudeh Garcia
-     - Dave Hershberger
-     - G. vd. Hoorn
-     - Philip Long
-     - Dave Coleman
-     - Miguel Prada
-     - Mathias Luedtke
-     - Marcel Schnirring
-     - Felix von Drigalski
-     - Felix Exner
-     - Jimmy Da Silva
-     - Ajit Krisshna N L
-     - Muhammad Asif Rana
-  -->
-
-  <xacro:include filename="$(find ur5e_description)/urdf/inc/ur_common.xacro" />
-  <xacro:include filename="$(find ur5e_description)/urdf/robotiq_85_gripper.urdf.xacro"/>
-  <xacro:include filename="$(find ur5e_description)/urdf/_d455.urdf.xacro" />
+  <xacro:include filename="$(find ur5e_description)/urdf/ur5e/inc/ur_common.xacro" /> 
+  <xacro:include filename="$(find ur5e_description)/urdf/gripper/robotiq_85_gripper.urdf.xacro"/>
+  <xacro:include filename="$(find ur5e_description)/urdf/realsense/_d455.urdf.xacro" />
 
   <xacro:macro name="ur_robot" params="
     name
@@ -278,11 +229,6 @@
     <joint name="${tf_prefix}base_link-base_link_inertia" type="fixed">
       <parent link="${tf_prefix}base_link" />
       <child link="${tf_prefix}base_link_inertia" />
-      <!-- 'base_link' is REP-103 aligned (so X+ forward), while the internal
-           frames of the robot/controller have X+ pointing backwards.
-           Use the joint between 'base_link' and 'base_link_inertia' (a dummy
-           link/frame) to introduce the necessary rotation over Z (of pi rad).
-      -->
       <origin xyz="0 0 0" rpy="0 0 ${pi}" />
     </joint>
     <joint name="${tf_prefix}shoulder_pan_joint" type="revolute">
