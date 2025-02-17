@@ -4,3 +4,4 @@ elbow_joint: -0.016
 wrist_1_joint: -1.492
 wrist_2_joint: -0.232
 wrist_3_joint: -0.033
+gripper_robotiq_85_left_knuckle_joint: 0.0

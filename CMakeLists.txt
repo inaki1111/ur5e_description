@@ -4,8 +4,15 @@ project(ur5e_description)
 find_package(ament_cmake REQUIRED)
 
 install(
-  DIRECTORY config launch meshes rviz urdf test
+  DIRECTORY config launch meshes rviz urdf test scripts
   DESTINATION share/${PROJECT_NAME}
+)
+
+# Instalar el script de Python
+install(PROGRAMS
+  scripts/test.py
+  scripts/gripper_mimic_node.py
+  DESTINATION lib/${PROJECT_NAME}
 )
 
 ament_export_dependencies(${THIS_PACKAGE_INCLUDE_DEPENDS})

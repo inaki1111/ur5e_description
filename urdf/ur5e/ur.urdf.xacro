@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="ur">
-
-  <!-- Define los argumentos dentro del <robot> -->
+  
+  <!-- Define los argumentos -->
   <xacro:arg name="name" default="ur"/>
   <xacro:arg name="ur_type" default="ur5e"/>
   <xacro:arg name="tf_prefix" default=""/>
@@ -14,13 +14,15 @@
   <xacro:arg name="safety_pos_margin" default="0.15"/>
   <xacro:arg name="safety_k_position" default="20"/>
   <xacro:arg name="force_abs_paths" default="false"/>
-
-  <!-- Importa el macro principal -->
+  
+  <!-- Incluye el xacro del robot -->
   <xacro:include filename="$(find ur5e_description)/urdf/ur5e/ur_macro.xacro"/>
-
-  <!-- Crea un link fijo al mundo -->
+  <!-- Incluye solo el archivo de macros de la garra -->
+  <xacro:include filename="$(find robotiq_description)/urdf/robotiq_2f_85_macro.urdf.xacro"/>
+  
+  <!-- Link del mundo -->
   <link name="world" />
-
+  
   <!-- Instancia el robot -->
   <xacro:ur_robot
     name="$(arg name)"
@@ -34,8 +36,16 @@
     safety_pos_margin="$(arg safety_pos_margin)"
     safety_k_position="$(arg safety_k_position)"
     force_abs_paths="$(arg force_abs_paths)">
-    
     <origin xyz="0 0 0" rpy="0 0 0" /> 
   </xacro:ur_robot>
-
+  
+  <!-- Instancia la garra y la une al link final 'tool0' -->
+  <xacro:robotiq_gripper 
+      name="RobotiqGripperHardwareInterface" 
+      prefix="gripper_" 
+      parent="tool0" 
+      use_fake_hardware="true">
+    <origin xyz="0 0 0" rpy="-1.57 0 -1.57"/>
+  </xacro:robotiq_gripper>
+  
 </robot>

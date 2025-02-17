@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<sdf version="1.9">
+  <world name="world">
+
+    <!-- Incluir la mesa local -->
+    <include>
+      <!-- "model://Table" busca en tu directorio local 'models/Table' -->
+      <uri>model://Table</uri>
+    </include>
+    <include>
+      <uri>model://ground_plane</uri>
+    </include>
+  </world>
+</sdf>

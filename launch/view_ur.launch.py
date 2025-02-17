@@ -34,6 +34,8 @@ from launch.substitutions import Command, FindExecutable, LaunchConfiguration, P
 from launch_ros.actions import Node
 from launch_ros.substitutions import FindPackageShare
 from launch_ros.parameter_descriptions import ParameterValue
+import launch_ros
+
 
 
 def generate_launch_description():
@@ -157,5 +159,37 @@ def generate_launch_description():
         robot_state_publisher_node,
         rviz_node,
     ]
+
+    description_pkg_share = FindPackageShare("ur5e_description").find("ur5e_description")
+
+    controllers_file = "robotiq_controllers.yaml"
+    initial_joint_controllers = PathJoinSubstitution(
+        [description_pkg_share, "config", controllers_file]
+    )    
+
+    robot_description_param = {
+        "robot_description": launch_ros.parameter_descriptions.ParameterValue(
+            robot_description_content, value_type=str
+        )
+    }
+    update_rate_config_file = PathJoinSubstitution(
+        [
+            description_pkg_share,
+            "config",
+            "robotiq_update_rate.yaml",
+        ]
+    )
+
+
+
+    control_node = launch_ros.actions.Node(
+        package="controller_manager",
+        executable="ros2_control_node",
+        parameters=[
+            robot_description_param,
+            update_rate_config_file,
+            initial_joint_controllers,
+        ],
+    )
 
     return LaunchDescription(declared_arguments + nodes_to_start)
